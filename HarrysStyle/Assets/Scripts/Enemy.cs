@@ -8,11 +8,18 @@ public class Enemy : MonoBehaviour
     private bool movingRight = true;
     public Transform groundDetection;
     private Vector2 viewDirection;
+    private GameObject player;
+    public Rigidbody2D rigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player");
+
+        if (!rigidbody)
+        {
+            rigidbody = GetComponent<Rigidbody2D>();
+        }
     }
 
     // Update is called once per frame
@@ -69,6 +76,16 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void Attack()
     {
-        //TODO
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f, LayerMask.GetMask("Ground"));
+
+        if (Vector2.Distance(transform.position, player.transform.position) >= 2 && groundInfo.collider == true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        }
+        else
+        {
+            rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Debug.Log("Attack");
+        }
     }
 }

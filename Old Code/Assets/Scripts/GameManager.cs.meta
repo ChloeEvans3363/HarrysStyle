@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6052eaeed2c780046afc0c5dcac2a0d4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - scoreText: {instanceID: 0}
+  - gameOverText: {instanceID: 0}
+  - rocket: {instanceID: 0}
+  - MeMoRock: {fileID: 2459343301517447261, guid: 7299280b953b5ad46a948f88248d6088, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
