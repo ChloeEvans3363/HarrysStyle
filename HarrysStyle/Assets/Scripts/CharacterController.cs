@@ -8,7 +8,8 @@ public class CharacterController : MonoBehaviour
     private float yAxis;
     private Rigidbody2D rb;
     private int jumpQueue;
-    private float maxSpeed;
+    [SerializeField] private float acceleration;
+    [SerializeField] private float maxSpeed;
     private float speed;
     private float previousYVel;
     private bool reducedApex;
@@ -24,7 +25,6 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxSpeed = 5f;
         speed = 0f;
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
@@ -42,7 +42,7 @@ public class CharacterController : MonoBehaviour
         //Changes the player's speed
         if(xAxis > 0.1f || xAxis < -0.1f)
         {
-            speed += 0.5f;
+            speed += acceleration;
             if (speed > maxSpeed)
             {
                 speed = maxSpeed;
@@ -53,7 +53,7 @@ public class CharacterController : MonoBehaviour
         {
             if(speed > 0f)
             {
-                speed -= 0.5f;
+                speed -= acceleration;
             }
             else if (speed < 0f)
             {
@@ -74,14 +74,18 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!hasWallJump || xAxis == 0f)
+        //Used for wall jumping. Not applicable in this project.
+        /*if (!hasWallJump || xAxis == 0f)
         {
             grounded = CheckIfGrounded();
         }
         else
         {
             grounded = CheckIfGrounded() || CheckIfNearWall();
-        }
+        }*/
+
+        //Check if the player is on the ground
+        grounded = CheckIfGrounded();
         //Jumps if that input has been recieved
         if (jumpQueue > 0)
         {
@@ -134,26 +138,17 @@ public class CharacterController : MonoBehaviour
     /// <returns></returns>
     private bool CheckIfGrounded()
     {
-        //The overly complicated "am I on the ground" detection
-        RaycastHit2D boxCheck;
-        Collider2D sideHit = Physics2D.OverlapBox(transform.position, new Vector2(0.8f, 1f), 0f, 9);
-        //Decides on the scale of the boxcast depending on whether or not a larger cast would hit a nearby wall
-        if (sideHit == null)
-        {
-            boxCheck = Physics2D.BoxCast(transform.position, new Vector2(0.8f, 1.0f), 0f, new Vector2(0f, -1f), 0.1f, 9);
-        }
-        else
-        {
-            boxCheck = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 1.0f), 0f, new Vector2(0f, -1f), 0.1f, 9);
-        }
-        return boxCheck;
+        //I am working on it
+        RaycastHit2D boxCheck1 = Physics2D.Raycast(transform.position + new Vector3(0.5f, 0f, 0f), Vector2.down, 0.7f);
+        RaycastHit2D boxCheck2 = Physics2D.Raycast(transform.position - new Vector3(0.5f, 0f, 0f), Vector2.down, 0.7f);
+        return boxCheck1 || boxCheck2;
     }
 
     /// <summary>
     /// Checks if the player is next to a wall (used for wall jumping)
     /// </summary>
     /// <returns></returns>
-    private bool CheckIfNearWall()
+    /*private bool CheckIfNearWall()
     {
         RaycastHit2D checkForWall = Physics2D.Raycast(transform.position, new Vector2(dir, 0f), 0.42f, 9);
 
@@ -175,5 +170,5 @@ public class CharacterController : MonoBehaviour
             sliding = false;
             return false;
         }
-    }
+    }*/
 }
