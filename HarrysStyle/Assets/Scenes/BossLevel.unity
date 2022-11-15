@@ -1334,7 +1334,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beca4feb03e256e4db8e11b0dac11b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 5
+  waitTime: 3
+  colorOG: {r: 0.8392157, g: 0.6, b: 1, a: 1}
+  dashStartupOG: 0.25
+  dashSpeed: 15
+  dashColor: {r: 0.92156863, g: 0.19607843, b: 0, a: 1}
 --- !u!1 &8124268273743942725
 GameObject:
   m_ObjectHideFlags: 0
