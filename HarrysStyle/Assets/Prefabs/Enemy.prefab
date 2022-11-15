@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   groundDetection: {fileID: 8124268274129076755}
-  rigidbody: {fileID: 0}
+  rigid: {fileID: 0}
 --- !u!1 &8124268274129076752
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,16 +9,17 @@ public class Enemy : MonoBehaviour
     public Transform groundDetection;
     private Vector2 viewDirection;
     private GameObject player;
-    public Rigidbody2D rigidbody;
+    public Rigidbody2D rigid;
+    private float knockbackForce = 30f;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
 
-        if (!rigidbody)
+        if (!rigid)
         {
-            rigidbody = GetComponent<Rigidbody2D>();
+            rigid = GetComponent<Rigidbody2D>();
         }
     }
 
@@ -84,8 +85,19 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-            Debug.Log("Attack");
+            rigid.constraints = RigidbodyConstraints2D.FreezeAll;
+            //Debug.Log("Attack");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("hit");
+            //Vector2 direction = (collision.transform.position - transform.position).normalized;
+            //Vector2 knockback = direction * knockbackForce;
+           // player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
         }
     }
 }
