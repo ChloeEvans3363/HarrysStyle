@@ -617,9 +617,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1022371760293753953, guid: 2e9a859b6810abb4bb4615f9e3cdd07d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1022371760293753953, guid: 2e9a859b6810abb4bb4615f9e3cdd07d, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 487306152}
+    - target: {fileID: 1022371760293753955, guid: 2e9a859b6810abb4bb4615f9e3cdd07d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1022371761527172359, guid: 2e9a859b6810abb4bb4615f9e3cdd07d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239248867984180658, guid: 2e9a859b6810abb4bb4615f9e3cdd07d, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 9158173593066403479, guid: 4f9237c19f1db3a47b21f06650da633e, type: 3}
+    - target: {fileID: 4239248867984180658, guid: 2e9a859b6810abb4bb4615f9e3cdd07d, type: 3}
+      propertyPath: enemyBullet
+      value: 
+      objectReference: {fileID: 9158173593066403479, guid: 4f9237c19f1db3a47b21f06650da633e, type: 3}
+    - target: {fileID: 4239248867984180658, guid: 2e9a859b6810abb4bb4615f9e3cdd07d, type: 3}
+      propertyPath: projectilePos
+      value: 
+      objectReference: {fileID: 1147534503}
     - target: {fileID: 4925764963430221291, guid: 2e9a859b6810abb4bb4615f9e3cdd07d, type: 3}
       propertyPath: m_Name
       value: Bat
@@ -674,6 +698,11 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5897586185538095777, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
   m_PrefabInstance: {fileID: 5897586185628127461}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1147534503 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1022371760293753954, guid: 2e9a859b6810abb4bb4615f9e3cdd07d, type: 3}
+  m_PrefabInstance: {fileID: 986174215}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1357877359
 GameObject:

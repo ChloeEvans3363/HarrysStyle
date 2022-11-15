@@ -13,17 +13,38 @@ public class Bat : MonoBehaviour
     private float heightMinimum;
     private bool up;
 
+    public GameObject projectile;
+    public Transform projectilePos;
+    private float timer;
+
     // Start is called before the first frame update
     void Start()
     {
         heightLimit = transform.position.y + distance;
         heightMinimum = transform.position.y - distance;
         up = true;
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+
+        if(distance < 10)
+        {
+            timer += Time.deltaTime;
+
+            if (timer > 5)
+            {
+                timer = 0;
+                shoot();
+            }
+        }
+
         if (transform.position.y > heightLimit)
         {
             up = false;
@@ -41,6 +62,11 @@ public class Bat : MonoBehaviour
         {
             transform.Translate(Vector2.down * speed * Time.deltaTime);
         }
+    }
+
+    void shoot()
+    {
+        Instantiate(projectile, projectilePos.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
