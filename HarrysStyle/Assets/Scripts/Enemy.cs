@@ -11,11 +11,14 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     public Rigidbody2D rigid;
     private float knockbackForce = 30f;
+    public int health;
+    private bool isAlive;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        isAlive = true;
 
         if (!rigid)
         {
@@ -26,6 +29,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (health <= 0)
+        {
+            isAlive = false;
+            //death animation, other death logic here
+            Destroy(gameObject);
+        }
         // Indicates if the enemy can view the player
         // If the enemy can view the player then it goes into attack mode
         RaycastHit2D view = Physics2D.Raycast(groundDetection.position, viewDirection, 10f);
@@ -37,6 +46,12 @@ public class Enemy : MonoBehaviour
         {
             Patrolling();
         }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        //damage animation
+        health -= amount;
     }
 
     /// <summary>

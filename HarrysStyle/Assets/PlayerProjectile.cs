@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerProjectile : MonoBehaviour
 {
     public float speed = 20f;
+    public int damageDone = 20;
     public bool bouncer = false;
     public Rigidbody2D rb;
 
@@ -22,6 +23,13 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Enemy")
+        {
+            GameObject body = collision.gameObject;
+            body.GetComponent<Enemy>().TakeDamage(damageDone);
+            Destroy(gameObject);
+        }
+
         if (collision.tag != "Player")
         {
             Destroy(gameObject);

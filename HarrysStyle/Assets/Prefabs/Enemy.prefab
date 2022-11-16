@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8124268272767802984}
   m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   speed: 5
   groundDetection: {fileID: 8124268274129076755}
   rigid: {fileID: 0}
+  health: 50
 --- !u!1 &8124268274129076752
 GameObject:
   m_ObjectHideFlags: 0
