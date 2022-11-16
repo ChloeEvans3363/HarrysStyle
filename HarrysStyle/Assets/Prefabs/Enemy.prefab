@@ -150,7 +150,7 @@ MonoBehaviour:
   speed: 5
   groundDetection: {fileID: 8124268274129076755}
   rigid: {fileID: 0}
-  health: 50
+  health: 40
 --- !u!1 &8124268274129076752
 GameObject:
   m_ObjectHideFlags: 0
