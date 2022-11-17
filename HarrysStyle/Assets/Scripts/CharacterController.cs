@@ -145,10 +145,19 @@ public class CharacterController : MonoBehaviour
     /// <returns></returns>
     private bool CheckIfGrounded()
     {
-        //I am working on it
-        RaycastHit2D boxCheck1 = Physics2D.Raycast(transform.position + new Vector3(0.5f, 0f, 0f), Vector2.down, 0.7f);
-        RaycastHit2D boxCheck2 = Physics2D.Raycast(transform.position - new Vector3(0.5f, 0f, 0f), Vector2.down, 0.7f);
-        return boxCheck1 || boxCheck2;
+        //The overly complicated "am I on the ground" detection
+        RaycastHit2D boxCheck;
+        Collider2D sideHit = Physics2D.OverlapBox(transform.position, new Vector2(0.8f, 1f), 0f, 7);
+        //Decides on the scale of the boxcast depending on whether or not a larger cast would hit a nearby wall
+        if (sideHit == null)
+        {
+            boxCheck = Physics2D.BoxCast(transform.position, new Vector2(0.8f, 1.0f), 0f, new Vector2(0f, -1f), 0.1f, 7);
+        }
+        else
+        {
+            boxCheck = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 1.0f), 0f, new Vector2(0f, -1f), 0.1f, 7);
+        }
+        return boxCheck;
     }
 
     public void Damage(int damage)
