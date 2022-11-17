@@ -6,7 +6,7 @@ public class VampireBoss : MonoBehaviour
 {
     [Header("Game")]
     private GameObject player;
-    private int attackDamage;
+    [SerializeField] private int attackDamage;
 
     [Header("Vampire Boss")]
     [SerializeField] private float waitTime = 3f; //cooldown for actions
@@ -22,6 +22,7 @@ public class VampireBoss : MonoBehaviour
     [SerializeField] private float dashSpeed = 15f;
     [SerializeField] private Color dashColor;
     [SerializeField] private int dashProgress = 0;
+    [SerializeField] private float dashStun; //how long the boss has to wait after using dash
     private Vector2 targetPos;
 
     [Header("Summon Bats")]
@@ -30,6 +31,7 @@ public class VampireBoss : MonoBehaviour
     [SerializeField] private bool batsSummoned = false;
     [SerializeField] private float batSpeed = 5f;
     [SerializeField] private Color batColor;
+    [SerializeField] private float summonStun; //how long the boss has to wait after using stun
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +40,6 @@ public class VampireBoss : MonoBehaviour
         dashStartup = dashStartupOG;
         player = GameObject.FindWithTag("Player");
         sprite = gameObject.GetComponent<SpriteRenderer>();
-        attackDamage = 1;
     }
 
     // Update is called once per frame
@@ -46,7 +47,7 @@ public class VampireBoss : MonoBehaviour
     {
         if (waitTime <= 0)
         {
-            if(currentAttack == 0)
+            if (currentAttack == 0)
             {
                 currentAttack = Random.Range(1, 3);
                 //currentAttack = 2;
@@ -135,7 +136,7 @@ public class VampireBoss : MonoBehaviour
                 {
                     dashProgress = 0;
 
-                    waitTime = 4f;
+                    waitTime = dashStun;
                     currentAttack = 0;
                     sprite.color = colorOG;
                 }
@@ -166,7 +167,7 @@ public class VampireBoss : MonoBehaviour
                 else
                 {
                     batsSummoned = false;
-                    waitTime = 2f;
+                    waitTime = summonStun;
                     currentAttack = 0;
                     sprite.color = colorOG;
                 }

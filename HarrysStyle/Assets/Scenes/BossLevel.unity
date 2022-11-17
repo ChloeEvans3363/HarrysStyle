@@ -498,6 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb3aa446c7156044b43be177d460e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 2
 --- !u!1 &1526467448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,6 +1781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb3aa446c7156044b43be177d460e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 2
 --- !u!1 &1674869864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,6 +1896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb3aa446c7156044b43be177d460e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 2
 --- !u!1 &2004892904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1906,7 +1909,7 @@ GameObject:
   - component: {fileID: 2004892906}
   m_Layer: 0
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2051,6 +2054,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 657836660}
   scrollY: 0
+  minBound: 0
+  maxBound: 0
+  nonScrollingPos: 0
 --- !u!1 &8124268272951904312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,9 +2070,10 @@ GameObject:
   - component: {fileID: 8124268272951904314}
   - component: {fileID: 8124268272951904313}
   - component: {fileID: 8124268272951904317}
+  - component: {fileID: 8124268272951904318}
   m_Layer: 8
   m_Name: Vampire Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2199,7 +2206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beca4feb03e256e4db8e11b0dac11b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 3
+  attackDamage: 5
+  waitTime: 2
   colorOG: {r: 0.8392157, g: 0.6, b: 1, a: 1}
   currentAttack: 0
   dashStartupOG: 0.25
@@ -2207,6 +2215,7 @@ MonoBehaviour:
   dashSpeed: 15
   dashColor: {r: 0.92156863, g: 0.19607843, b: 0, a: 1}
   dashProgress: 0
+  dashStun: 1
   batSummons:
   - {fileID: 1189731030}
   - {fileID: 1674869864}
@@ -2215,6 +2224,21 @@ MonoBehaviour:
   batsSummoned: 0
   batSpeed: 11
   batColor: {r: 0.92156863, g: 0.6666667, b: 0, a: 1}
+  summonStun: 1
+--- !u!114 &8124268272951904318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124268272951904312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d09639f64b0204b9948025b22400f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 500
+  isAlive: 1
 --- !u!1 &8124268273743942725
 GameObject:
   m_ObjectHideFlags: 0
