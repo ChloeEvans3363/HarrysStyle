@@ -175,4 +175,4 @@ MonoBehaviour:
   rigid: {fileID: 0}
   distance: 2
   projectile: {fileID: 9158173593066403479, guid: 4f9237c19f1db3a47b21f06650da633e, type: 3}
-  projectilePos: {fileID: 0}
+  projectilePos: {fileID: 2856161450283935375}
