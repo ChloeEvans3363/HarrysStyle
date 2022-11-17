@@ -9,13 +9,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - CameraSwappers
   - Water
   - UI
   - Ground
   - Player
   - Enemy
-  - 
+  - Bullets
   - 
   - 
   - 
