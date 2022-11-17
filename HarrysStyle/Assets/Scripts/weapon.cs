@@ -8,15 +8,26 @@ public class weapon : MonoBehaviour
     public Transform firingPoint;
     public GameObject projectile;
     public Quaternion bulletVec;
+    [SerializeField] private float shotCooldownOG = .5f;
+    private float shotCooldown;
+
+    public void Start()
+    {
+        shotCooldown = shotCooldownOG;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && shotCooldown <= 0)
         {
             Shoot();
+            shotCooldown = shotCooldownOG;
         }
-       
+       if(shotCooldown > 0)
+        {
+            shotCooldown -= Time.deltaTime;
+        }
     }
 
     private void Shoot()
