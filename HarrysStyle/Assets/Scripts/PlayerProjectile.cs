@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerProjectile : MonoBehaviour
 {
     public float speed = 20f;
-    public int damageDone = 20;
+    public int damageDone = 10;
     public bool bouncer = false;
     public Rigidbody2D rb;
 
@@ -19,6 +19,7 @@ public class PlayerProjectile : MonoBehaviour
         }
        
         rb.velocity = transform.right * speed;
+        Destroy(gameObject, 5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,7 +31,7 @@ public class PlayerProjectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.tag != "Player")
+        if (collision.tag != "Player" && collision.tag != "Hitbox")
         {
             Destroy(gameObject);
         }

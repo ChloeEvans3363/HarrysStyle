@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private Vector2 viewDirection;
     private GameObject player;
     public Rigidbody2D rigid;
-    private float knockbackForce = 10f;
+    private float knockbackForce = 20f;
     private int attackDamage;
 
     private float timer;
@@ -109,9 +109,11 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             player.GetComponent<CharacterController>().Damage(attackDamage);
-            //attackHitbox.SetActive(false);
+            attackHitbox.SetActive(false);
             //Vector2 direction = (collision.transform.position - transform.position).normalized;
+            //Debug.Log("Direction:" + direction);
             //Vector2 knockback = direction * knockbackForce;
+            //Debug.Log("Knockback:" + knockback);
             //player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
         }
     }
