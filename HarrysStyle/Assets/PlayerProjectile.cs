@@ -26,7 +26,7 @@ public class PlayerProjectile : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             GameObject body = collision.gameObject;
-            body.GetComponent<Enemy>().TakeDamage(damageDone);
+            body.GetComponent<EnemyHealth>().TakeDamage(damageDone);
             Destroy(gameObject);
         }
 
