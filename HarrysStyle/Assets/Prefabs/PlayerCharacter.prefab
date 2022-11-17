@@ -136,6 +136,7 @@ MonoBehaviour:
   maxSpeed: 5.2
   hasWallJump: 0
   hasClimb: 0
+  healthBar: {fileID: 0}
 --- !u!50 &5897586185538095788
 Rigidbody2D:
   serializedVersion: 4
@@ -154,7 +155,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &5897586185538095789

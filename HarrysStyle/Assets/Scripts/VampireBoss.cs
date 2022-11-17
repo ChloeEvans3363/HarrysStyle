@@ -6,6 +6,7 @@ public class VampireBoss : MonoBehaviour
 {
     [Header("Game")]
     private GameObject player;
+    private int attackDamage;
 
     [Header("Vampire Boss")]
     [SerializeField] private float waitTime = 3f; //cooldown for actions
@@ -37,6 +38,7 @@ public class VampireBoss : MonoBehaviour
         dashStartup = dashStartupOG;
         player = GameObject.FindWithTag("Player");
         sprite = gameObject.GetComponent<SpriteRenderer>();
+        attackDamage = 1;
     }
 
     // Update is called once per frame
@@ -169,6 +171,14 @@ public class VampireBoss : MonoBehaviour
                     sprite.color = colorOG;
                 }
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            player.GetComponent<CharacterController>().Damage(attackDamage);
         }
     }
 }

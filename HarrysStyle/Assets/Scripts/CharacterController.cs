@@ -22,11 +22,18 @@ public class CharacterController : MonoBehaviour
     private int jumpTime;
     private int wallJumpStart;
 
+    private int maxHealth = 20;
+    private int currentHealth;
+    public HealthBar healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
         speed = 0f;
         rb = gameObject.GetComponent<Rigidbody2D>();
+        maxHealth = 20;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -142,6 +149,24 @@ public class CharacterController : MonoBehaviour
         RaycastHit2D boxCheck1 = Physics2D.Raycast(transform.position + new Vector3(0.5f, 0f, 0f), Vector2.down, 0.7f);
         RaycastHit2D boxCheck2 = Physics2D.Raycast(transform.position - new Vector3(0.5f, 0f, 0f), Vector2.down, 0.7f);
         return boxCheck1 || boxCheck2;
+    }
+
+    public void Damage(int damage)
+    {
+        if(currentHealth > 0)
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+        }
+        else
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        Debug.Log("You Died");
     }
 
     /// <summary>

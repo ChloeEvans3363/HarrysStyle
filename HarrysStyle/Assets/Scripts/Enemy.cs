@@ -13,12 +13,18 @@ public class Enemy : MonoBehaviour
     private float knockbackForce = 30f;
     public int health;
     private bool isAlive;
+    private int attackDamage;
+
+    private float timer;
+    public GameObject attackHitbox;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         isAlive = true;
+        attackDamage = 1;
+        attackHitbox.SetActive(false);
 
         if (!rigid)
         {
@@ -44,8 +50,10 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            timer = 2;
             Patrolling();
         }
+
     }
 
     public void TakeDamage(int amount)
@@ -63,7 +71,7 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
         // Raycast the view from below the enemy
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f, LayerMask.GetMask("Ground"));
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f, LayerMask.GetMask("Default"));
 
         // Checks if the enemy view can detect any collider below it
         // If it cannot detect anything then the enemy will turn
@@ -92,7 +100,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void Attack()
     {
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f, LayerMask.GetMask("Ground"));
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f, LayerMask.GetMask("Default"));
 
         if (Vector2.Distance(transform.position, player.transform.position) >= 2 && groundInfo.collider == true)
         {
@@ -100,8 +108,14 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            timer += Time.deltaTime;
             rigid.constraints = RigidbodyConstraints2D.FreezeAll;
-            //Debug.Log("Attack");
+
+            if (timer > 2)
+            {
+                timer = 0;
+                attackHitbox.SetActive(true);
+            }
         }
     }
 
@@ -109,10 +123,13 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("hit");
+            player.GetComponent<CharacterController>().Damage(attackDamage);
+            attackHitbox.SetActive(false);
             //Vector2 direction = (collision.transform.position - transform.position).normalized;
             //Vector2 knockback = direction * knockbackForce;
-           // player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
+            // player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
         }
     }
+
+    
 }

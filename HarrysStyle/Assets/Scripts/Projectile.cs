@@ -11,12 +11,13 @@ public class Projectile : MonoBehaviour
     public float force;
     private float speed;
     private float timer;
+    private int attackDamage;
 
     Vector3 pos, vel;
     void Start()
     {
         //vel = Vector3.zero;
-
+        attackDamage = 1;
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -46,6 +47,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            player.GetComponent<CharacterController>().Damage(attackDamage);
             Destroy(gameObject);
         }
     }

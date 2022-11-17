@@ -16,6 +16,7 @@ public class Bat : MonoBehaviour
     public GameObject projectile;
     public Transform projectilePos;
     private float timer;
+    private int attackDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,9 @@ public class Bat : MonoBehaviour
         heightLimit = transform.position.y + distance;
         heightMinimum = transform.position.y - distance;
         up = true;
-
+        attackDamage = 1;
         player = GameObject.FindGameObjectWithTag("Player");
+        timer = 3;
     }
 
     // Update is called once per frame
@@ -36,9 +38,8 @@ public class Bat : MonoBehaviour
 
         if(distance < 10)
         {
-            timer += Time.deltaTime;
 
-            if (timer > 5)
+            if (timer > 3)
             {
                 timer = 0;
                 shoot();
@@ -73,7 +74,8 @@ public class Bat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("hit");
+            player.GetComponent<CharacterController>().Damage(attackDamage);
+            //Debug.Log("hit");
             //Vector2 direction = (collision.transform.position - transform.position).normalized;
             //Vector2 knockback = direction * knockbackForce;
             // player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
