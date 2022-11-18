@@ -10,7 +10,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
-        healthBar.SetMaxHealth(health);
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(health);
+        }
     }
 
 
