@@ -16,13 +16,14 @@ public class CharacterController : MonoBehaviour
     private float dir;
     [SerializeField] private bool hasWallJump;
     [SerializeField] private bool hasClimb;
+    [SerializeField] private float stun = 0; //used in the boss battle
     private bool grounded;
     private bool sliding;
 
     private int jumpTime;
     private int wallJumpStart;
 
-    private int maxHealth = 20;
+    [SerializeField] private int maxHealth = 20;
     private int currentHealth;
     public HealthBar healthBar;
 
@@ -31,7 +32,6 @@ public class CharacterController : MonoBehaviour
     {
         speed = 0f;
         rb = gameObject.GetComponent<Rigidbody2D>();
-        maxHealth = 20;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -47,7 +47,7 @@ public class CharacterController : MonoBehaviour
         }
 
         //Changes the player's speed
-        if(xAxis > 0.1f || xAxis < -0.1f)
+        if((xAxis > 0.1f || xAxis < -0.1f) && stun <= 0)
         {
             speed += acceleration;
             if (speed > maxSpeed)
@@ -67,16 +67,19 @@ public class CharacterController : MonoBehaviour
                 speed = 0f;
             }
         }
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump") && stun <= 0)
         {
             jumpQueue = 2;
         }
         //Check for if the jump should be shortened
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetButtonUp("Jump") && stun <= 0)
         {
             jumpTime = 0;
             rb.velocity = new Vector2(speed * dir, rb.velocity.y * 0.7f);
         }
+
+        //removes stun over time
+        stun -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -171,6 +174,11 @@ public class CharacterController : MonoBehaviour
         {
             Death();
         }
+    }
+
+    public void Stun(float stunDuration)
+    {
+        stun = stunDuration;
     }
 
     private void Death()
