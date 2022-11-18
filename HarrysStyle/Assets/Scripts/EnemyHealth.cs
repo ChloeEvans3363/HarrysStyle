@@ -21,8 +21,11 @@ public class EnemyHealth : MonoBehaviour
     {
         //damage animation
         health -= amount;
-        healthBar.SetHealth(health);
-        if (health <= 0)
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(health);
+        }
+            if (health <= 0)
         {
             isAlive = false;
             //death animation, other death logic here
