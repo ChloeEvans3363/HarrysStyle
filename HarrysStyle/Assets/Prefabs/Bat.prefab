@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  rigid: {fileID: 0}
   distance: 0
   projectile: {fileID: 0}
   projectilePos: {fileID: 0}

@@ -45,4 +45,9 @@ public class weapon : MonoBehaviour
         Instantiate(projectile, firingPoint.position, bulletVec);
 
     }
+
+    public void Stun(float stunDuration)
+    {
+        shotCooldown += stunDuration;
+    }
 }

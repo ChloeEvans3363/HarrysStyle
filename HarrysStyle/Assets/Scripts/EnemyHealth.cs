@@ -6,13 +6,26 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] public int health;
     [SerializeField] private bool isAlive = true;
+    public HealthBar healthBar;
+
+    private void Start()
+    {
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(health);
+        }
+    }
 
 
     public void TakeDamage(int amount)
     {
         //damage animation
         health -= amount;
-        if (health <= 0)
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(health);
+        }
+            if (health <= 0)
         {
             isAlive = false;
             //death animation, other death logic here

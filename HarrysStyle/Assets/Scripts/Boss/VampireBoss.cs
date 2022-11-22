@@ -6,7 +6,6 @@ public class VampireBoss : MonoBehaviour
 {
     [Header("Game")]
     private GameObject player;
-    [SerializeField] private int attackDamage;
 
     [Header("Vampire Boss")]
     [SerializeField] private float waitTime = 3f; //cooldown for actions
@@ -33,6 +32,16 @@ public class VampireBoss : MonoBehaviour
     [SerializeField] private Color batColor;
     [SerializeField] private float summonStun; //how long the boss has to wait after using stun
 
+    [Header("Glare Attack")]
+    [SerializeField] private LineRenderer glareLine;
+    [SerializeField] private EdgeCollider2D edgeCollider;
+    [SerializeField] private float glareStartupOG = .5f; //how long it takes before the dash occurs (after locking onto a target position)
+    [SerializeField] private float glareStartup; //the current timer for the dash
+    [SerializeField] private float glareDuration = 0.25f;
+    [SerializeField] private Color glareColor;
+    [SerializeField] private float glareStun; //how long the boss has to wait after using glare
+    //private Vector2 targetPos used as well
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +58,7 @@ public class VampireBoss : MonoBehaviour
         {
             if (currentAttack == 0)
             {
-                currentAttack = Random.Range(1, 3);
+                currentAttack = Random.Range(1, 4);
                 //currentAttack = 2;
             }
             else if(currentAttack == 1)
@@ -59,6 +68,14 @@ public class VampireBoss : MonoBehaviour
             else if(currentAttack == 2)
             {
                 SummonBats();
+            }
+            else if(currentAttack == 3)
+            {
+                GlareAttack();
+            }
+            else if(currentAttack == 4) //glare attack followup
+            {
+                currentAttack = Random.Range(1, 3);
             }
         }
         else
@@ -175,11 +192,60 @@ public class VampireBoss : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void GlareAttack()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (glareStartup == glareStartupOG)
         {
-            player.GetComponent<CharacterController>().Damage(attackDamage);
+            targetPos = player.transform.position; //the location that the vampire boss will dash to
+            if (Mathf.Abs(transform.position.x - targetPos.x) > 1.5f)
+            {
+                if (transform.position.x - targetPos.x > 0f)
+                {
+                    targetPos.x -= 5f;
+                }
+                else if (transform.position.x - targetPos.x < 0f)
+                {
+                    targetPos.x += 5f;
+                }
+            }
+
+            sprite.color = glareColor;
+        }
+
+        if (glareStartup > 0)
+        {
+            glareStartup -= Time.deltaTime;
+            if(glareStartup <= 0)
+            {
+                targetPos.x -= transform.position.x;
+                targetPos.y -= transform.position.y;
+                glareLine.GetComponent<LineRenderer>().SetPosition(1, targetPos);
+
+                //generates collider for the line
+                List<Vector2> edges = new List<Vector2>();
+
+                for(int i = 0; i < glareLine.positionCount; i++)
+                {
+                    Vector2 point = glareLine.GetPosition(i);
+                    edges.Add(new Vector2(point.x, point.y));
+                }
+
+                edgeCollider.SetPoints(edges);
+
+                glareLine.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            glareStartup -= Time.deltaTime;
+            if(glareStartup <= -glareDuration)
+            {
+                glareStartup = glareStartupOG;
+                glareLine.gameObject.SetActive(false);
+                waitTime = glareStun;
+                currentAttack = 4;
+                sprite.color = colorOG;
+            }
         }
     }
 }
