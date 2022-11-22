@@ -87,14 +87,14 @@ public class CharacterController : MonoBehaviour
 
         if (invincible)
         {
-            Debug.Log("i am invincible");
+            //Debug.Log("i am invincible");
             iFrameTimer += Time.deltaTime;
 
             if (iFrameTimer > 4)
             {
                 iFrameTimer = 0;
                 invincible = false;
-                Debug.Log("i am normals");
+                //Debug.Log("i am normals");
             }
         }
     }

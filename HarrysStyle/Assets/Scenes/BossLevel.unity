@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 468164832}
   - component: {fileID: 468164834}
   - component: {fileID: 468164835}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Glare Attack
   m_TagString: Hitbox
   m_Icon: {fileID: 0}

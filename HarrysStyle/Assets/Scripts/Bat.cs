@@ -6,7 +6,7 @@ public class Bat : MonoBehaviour
 {
     public float speed;
     private GameObject player;
-    private float knockbackForce = 30f;
+    private float knockbackForce = 20f;
     public float distance;
     private float heightLimit;
     private float heightMinimum;

@@ -6,6 +6,7 @@ public class BatSummonDamage : MonoBehaviour
 {
     private GameObject player;
     [SerializeField] private int attackDamage;
+    private float knockbackForce = 20f;
 
     void Start()
     {
@@ -16,7 +17,13 @@ public class BatSummonDamage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.GetComponent<CharacterController>().Damage(attackDamage);
+            if (!player.GetComponent<CharacterController>().invincible)
+            {
+                Vector2 direction = (collision.transform.position - transform.position).normalized;
+                Vector2 knockback = direction * knockbackForce;
+                player.GetComponent<CharacterController>().Knockback(knockback.x, knockback.y);
+                player.GetComponent<CharacterController>().Damage(attackDamage);
+            }
         }
     }
 }
