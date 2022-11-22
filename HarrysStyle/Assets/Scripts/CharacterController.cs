@@ -29,6 +29,7 @@ public class CharacterController : MonoBehaviour
     private int currentHealth;
     public HealthBar healthBar;
     public bool invincible;
+    private float iFrameTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -86,7 +87,15 @@ public class CharacterController : MonoBehaviour
 
         if (invincible)
         {
-            Debug.Log("i am anime");
+            Debug.Log("i am invincible");
+            iFrameTimer += Time.deltaTime;
+
+            if (iFrameTimer > 4)
+            {
+                iFrameTimer = 0;
+                invincible = false;
+                Debug.Log("i am normals");
+            }
         }
     }
 
@@ -150,7 +159,7 @@ public class CharacterController : MonoBehaviour
         previousYVel = rb.velocity.y;
 
         //Reduce x knockback
-        xKnockback *= 0.95f;
+        xKnockback *= 0.55f;
         if(Mathf.Abs(xKnockback) <= 0.05f)
         {
             xKnockback = 0f;
@@ -180,7 +189,7 @@ public class CharacterController : MonoBehaviour
 
     public void Damage(int damage)
     {
-        if(currentHealth > 0 && !invincible)
+        if(currentHealth > 0)
         {
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
@@ -205,7 +214,7 @@ public class CharacterController : MonoBehaviour
     public void Knockback(float x, float y)
     {
         xKnockback = x;
-        rb.AddForce(Vector2.up * y);
+        rb.AddForce(new Vector2(x, y), ForceMode2D.Impulse);
     }
 
     private void Death()

@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     private float speed;
     private float timer;
     private int attackDamage;
+    private float knockbackForce = 10f;
 
     Vector3 pos, vel;
     void Start()
@@ -47,8 +48,14 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.GetComponent<CharacterController>().Damage(attackDamage);
             Destroy(gameObject);
+            if (!player.GetComponent<CharacterController>().invincible)
+            {
+                Vector2 direction = (collision.transform.position - transform.position).normalized;
+                Vector2 knockback = direction * knockbackForce;
+                player.GetComponent<CharacterController>().Knockback(knockback.x, knockback.y);
+                player.GetComponent<CharacterController>().Damage(attackDamage);
+            }
         }
     }
 }

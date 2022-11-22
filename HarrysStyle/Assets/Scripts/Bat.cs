@@ -73,11 +73,15 @@ public class Bat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.GetComponent<CharacterController>().Damage(attackDamage);
-            //Debug.Log("hit");
-            //Vector2 direction = (collision.transform.position - transform.position).normalized;
-            //Vector2 knockback = direction * knockbackForce;
-            // player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
+
+            if (!player.GetComponent<CharacterController>().invincible)
+            {
+                Vector2 direction = (collision.transform.position - transform.position).normalized;
+                Vector2 knockback = direction * knockbackForce;
+                player.GetComponent<CharacterController>().Knockback(knockback.x, knockback.y);
+                player.GetComponent<CharacterController>().Damage(attackDamage);
+            }
+
         }
     }
 }
