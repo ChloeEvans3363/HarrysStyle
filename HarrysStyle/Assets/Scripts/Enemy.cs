@@ -110,11 +110,11 @@ public class Enemy : MonoBehaviour
         {
             player.GetComponent<CharacterController>().Damage(attackDamage);
             attackHitbox.SetActive(false);
-            //Vector2 direction = (collision.transform.position - transform.position).normalized;
+            Vector2 direction = (collision.transform.position - transform.position).normalized;
             //Debug.Log("Direction:" + direction);
-            //Vector2 knockback = direction * knockbackForce;
+            Vector2 knockback = direction * knockbackForce;
             //Debug.Log("Knockback:" + knockback);
-            //player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
+            player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
         }
     }
 

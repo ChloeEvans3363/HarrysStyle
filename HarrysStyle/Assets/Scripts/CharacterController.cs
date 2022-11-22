@@ -26,6 +26,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private int maxHealth = 20;
     private int currentHealth;
     public HealthBar healthBar;
+    public bool invincible;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +81,11 @@ public class CharacterController : MonoBehaviour
 
         //removes stun over time
         stun -= Time.deltaTime;
+
+        if (invincible)
+        {
+            Debug.Log("i am anime");
+        }
     }
 
     private void FixedUpdate()
@@ -165,10 +171,11 @@ public class CharacterController : MonoBehaviour
 
     public void Damage(int damage)
     {
-        if(currentHealth > 0)
+        if(currentHealth > 0 && !invincible)
         {
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
+            invincible = true;
         }
         else
         {
