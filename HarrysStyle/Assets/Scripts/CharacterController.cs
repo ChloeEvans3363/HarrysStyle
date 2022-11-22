@@ -19,6 +19,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float stun = 0; //used in the boss battle
     private bool grounded;
     private bool sliding;
+    private float xKnockback;
+
 
     private int jumpTime;
     private int wallJumpStart;
@@ -76,7 +78,7 @@ public class CharacterController : MonoBehaviour
         if (Input.GetButtonUp("Jump") && stun <= 0)
         {
             jumpTime = 0;
-            rb.velocity = new Vector2(speed * dir, rb.velocity.y * 0.7f);
+            rb.velocity = new Vector2(speed * dir + xKnockback, rb.velocity.y * 0.7f);
         }
 
         //removes stun over time
@@ -117,18 +119,18 @@ public class CharacterController : MonoBehaviour
                 jumpQueue = 0;
                 rb.gravityScale = 1.75f;
                 reducedApex = false;
-                rb.velocity = new Vector2(speed, 15f);
+                rb.velocity = new Vector2(speed + xKnockback, 15f);
             }
         } else
         {
-            rb.velocity = new Vector2(speed * dir, rb.velocity.y);
+            rb.velocity = new Vector2(speed * dir + xKnockback, rb.velocity.y);
         }
         //
         if(jumpTime <= 0 || rb.velocity.y < 0f && !sliding)
         {
             if (rb.velocity.y > 0 && reducedApex == false)
             {
-                rb.velocity = new Vector2(speed * dir, rb.velocity.y * 0.7f);
+                rb.velocity = new Vector2(speed * dir + xKnockback, rb.velocity.y * 0.7f);
                 reducedApex = true;
             }
             rb.gravityScale = 2.5f;
@@ -146,6 +148,13 @@ public class CharacterController : MonoBehaviour
             wallJumpStart--;
         }
         previousYVel = rb.velocity.y;
+
+        //Reduce x knockback
+        xKnockback *= 0.95f;
+        if(Mathf.Abs(xKnockback) <= 0.05f)
+        {
+            xKnockback = 0f;
+        }
     }
 
     /// <summary>
@@ -186,6 +195,17 @@ public class CharacterController : MonoBehaviour
     public void Stun(float stunDuration)
     {
         stun = stunDuration;
+    }
+
+    /// <summary>
+    /// Knock back the character with an upward force of y and an additional velocity of x
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    public void Knockback(float x, float y)
+    {
+        xKnockback = x;
+        rb.AddForce(Vector2.up * y);
     }
 
     private void Death()
