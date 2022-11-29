@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5993049841527131353}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProjectileSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 6447563998410974862}
   - component: {fileID: 2162088782137167152}
   - component: {fileID: 821370652}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}

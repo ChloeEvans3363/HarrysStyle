@@ -11,10 +11,11 @@ public class Spikes : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            collision.GetComponent<CharacterController>().transform.position = checkpoint.transform.position;
+
             if (!collision.GetComponent<CharacterController>().invincible)
             {
                 collision.GetComponent<CharacterController>().Damage(attackDamage);
-                collision.GetComponent<CharacterController>().transform.position = checkpoint.transform.position;
             }
         }
     }

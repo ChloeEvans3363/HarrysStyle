@@ -58,5 +58,10 @@ public class Projectile : MonoBehaviour
                 player.GetComponent<CharacterController>().Damage(attackDamage);
             }
         }
+        else if (!collision.CompareTag("Enemy"))
+        {
+            Debug.Log(collision.tag);
+            Destroy(gameObject);
+        }
     }
 }
