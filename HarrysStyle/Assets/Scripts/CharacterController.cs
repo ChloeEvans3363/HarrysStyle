@@ -20,13 +20,14 @@ public class CharacterController : MonoBehaviour
     private bool grounded;
     private bool sliding;
     private float xKnockback;
+    public bool alive;
 
 
     private int jumpTime;
     private int wallJumpStart;
 
     [SerializeField] private int maxHealth = 20;
-    private int currentHealth;
+    public int currentHealth;
     public HealthBar healthBar;
     public bool invincible;
     private float iFrameTimer;
@@ -34,10 +35,12 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        alive = true;
         speed = 0f;
         rb = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        
     }
 
     // Update is called once per frame
@@ -90,7 +93,7 @@ public class CharacterController : MonoBehaviour
             //Debug.Log("i am invincible");
             iFrameTimer += Time.deltaTime;
 
-            if (iFrameTimer > 4)
+            if (iFrameTimer > 1)
             {
                 iFrameTimer = 0;
                 invincible = false;
@@ -189,15 +192,16 @@ public class CharacterController : MonoBehaviour
 
     public void Damage(int damage)
     {
-        if(currentHealth > 0)
+        if (!invincible)
         {
+           
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
+            if (currentHealth <= 0)
+            {
+                Death();
+            }
             invincible = true;
-        }
-        else
-        {
-            Death();
         }
     }
 
@@ -220,6 +224,15 @@ public class CharacterController : MonoBehaviour
     private void Death()
     {
         Debug.Log("You Died");
+        alive = false;
+    }
+
+    void OnGui()
+    {
+        if (!alive)
+        {
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 200f, 200f), "YOUD DIED:(");
+        }
     }
 
     /// <summary>
