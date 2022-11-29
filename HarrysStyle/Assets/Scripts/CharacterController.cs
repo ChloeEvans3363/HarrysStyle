@@ -90,7 +90,7 @@ public class CharacterController : MonoBehaviour
             //Debug.Log("i am invincible");
             iFrameTimer += Time.deltaTime;
 
-            if (iFrameTimer > 4)
+            if (iFrameTimer > 2)
             {
                 iFrameTimer = 0;
                 invincible = false;
@@ -189,15 +189,15 @@ public class CharacterController : MonoBehaviour
 
     public void Damage(int damage)
     {
-        if(currentHealth > 0)
+        if(!invincible)
         {
+            invincible = true;
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
-            invincible = true;
-        }
-        else
-        {
-            Death();
+            if(currentHealth <= 0)
+            {
+                Death();
+            }
         }
     }
 
@@ -220,6 +220,7 @@ public class CharacterController : MonoBehaviour
     private void Death()
     {
         Debug.Log("You Died");
+        Time.timeScale = 0;
     }
 
     /// <summary>
