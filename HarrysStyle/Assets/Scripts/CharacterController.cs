@@ -227,13 +227,7 @@ public class CharacterController : MonoBehaviour
         alive = false;
     }
 
-    void OnGui()
-    {
-        if (!alive)
-        {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 200f, 200f), "YOUD DIED:(");
-        }
-    }
+   
 
     /// <summary>
     /// Checks if the player is next to a wall (used for wall jumping)
