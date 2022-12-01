@@ -32,6 +32,12 @@ public class CharacterController : MonoBehaviour
     public bool invincible;
     private float iFrameTimer;
 
+    [Header("Dash")]
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashCooldownOG;
+    private float dashCooldown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +46,11 @@ public class CharacterController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        
+
+        //dash values
+        dashSpeed = 20;
+        dashDuration = 0.15f;
+        dashCooldownOG = 3;
     }
 
     // Update is called once per frame
@@ -83,6 +93,18 @@ public class CharacterController : MonoBehaviour
         {
             jumpTime = 0;
             rb.velocity = new Vector2(speed * dir + xKnockback, rb.velocity.y * 0.7f);
+        }
+
+        //dash mechanic
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldown <= 0)
+        {
+            StartCoroutine(Dash());
+        }
+
+        //cooldown for dash
+        if (dashCooldown > 0)
+        {
+            dashCooldown -= Time.deltaTime;
         }
 
         //removes stun over time
@@ -203,6 +225,16 @@ public class CharacterController : MonoBehaviour
             }
             invincible = true;
         }
+    }
+
+    public IEnumerator Dash()
+    {
+        dashCooldown = dashCooldownOG;
+        maxSpeed += dashSpeed;
+        acceleration += dashSpeed;
+        yield return new WaitForSeconds(dashDuration);
+        maxSpeed -= dashSpeed;
+        acceleration -= dashSpeed;
     }
 
     public void Stun(float stunDuration)

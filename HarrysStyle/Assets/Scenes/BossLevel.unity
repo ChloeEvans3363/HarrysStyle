@@ -578,6 +578,10 @@ PrefabInstance:
       value: PlayerCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 5897586185538095778, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
+      propertyPath: dashSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897586185538095778, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 395855156}
