@@ -48,7 +48,7 @@ public class VampireBoss : MonoBehaviour
         startingPos = transform.position;
         dashStartup = dashStartupOG;
         player = GameObject.FindWithTag("Player");
-        sprite = gameObject.GetComponent<SpriteRenderer>();
+        sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
