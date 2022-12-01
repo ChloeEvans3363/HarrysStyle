@@ -10,6 +10,7 @@ public class CharacterController : MonoBehaviour
     private int jumpQueue;
     [SerializeField] private float acceleration;
     [SerializeField] private float maxSpeed;
+    private float movingPlatformX;
     private float speed;
     private float previousYVel;
     private bool reducedApex;
@@ -21,7 +22,6 @@ public class CharacterController : MonoBehaviour
     private bool sliding;
     private float xKnockback;
     public bool alive;
-
 
     private int jumpTime;
     private int wallJumpStart;
@@ -157,14 +157,14 @@ public class CharacterController : MonoBehaviour
             }
         } else
         {
-            rb.velocity = new Vector2(speed * dir + xKnockback, rb.velocity.y);
+            rb.velocity = new Vector2(speed * dir + xKnockback + movingPlatformX, rb.velocity.y);
         }
         //
         if(jumpTime <= 0 || rb.velocity.y < 0f && !sliding)
         {
             if (rb.velocity.y > 0 && reducedApex == false)
             {
-                rb.velocity = new Vector2(speed * dir + xKnockback, rb.velocity.y * 0.7f);
+                rb.velocity = new Vector2(speed * dir + xKnockback + movingPlatformX, rb.velocity.y * 0.7f);
                 reducedApex = true;
             }
             rb.gravityScale = 2.5f;
@@ -209,6 +209,16 @@ public class CharacterController : MonoBehaviour
         {
             boxCheck = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 1.0f), 0f, new Vector2(0f, -1f), 0.1f, 7);
         }
+
+        if(boxCheck && boxCheck.collider.gameObject.GetComponent<MovingPlatform>())
+        {
+            MovingPlatform platform = boxCheck.collider.gameObject.GetComponent<MovingPlatform>();
+            movingPlatformX = platform.GetPlatformXVel();
+        } else
+        {
+            movingPlatformX = 0f;
+        }
+
         return boxCheck;
     }
 
@@ -258,8 +268,6 @@ public class CharacterController : MonoBehaviour
         Debug.Log("You Died");
         alive = false;
     }
-
-   
 
     /// <summary>
     /// Checks if the player is next to a wall (used for wall jumping)
