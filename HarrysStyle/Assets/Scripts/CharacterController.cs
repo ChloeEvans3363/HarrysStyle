@@ -45,12 +45,12 @@ public class CharacterController : MonoBehaviour
         speed = 0f;
         rb = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //healthBar.SetMaxHealth(maxHealth);
 
         //dash values
         dashSpeed = 20;
         dashDuration = 0.15f;
-        dashCooldownOG = 3;
+        dashCooldownOG = 0.5f;
     }
 
     // Update is called once per frame
