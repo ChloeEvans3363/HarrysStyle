@@ -267,6 +267,7 @@ public class CharacterController : MonoBehaviour
     {
         Debug.Log("You Died");
         alive = false;
+        Time.timeScale = 0;
     }
 
     /// <summary>
