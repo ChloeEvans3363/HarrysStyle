@@ -45,7 +45,7 @@ public class CharacterController : MonoBehaviour
         speed = 0f;
         rb = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
 
         //dash values
         dashSpeed = 20;
@@ -56,6 +56,7 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(currentHealth);
         xAxis = Input.GetAxisRaw("Horizontal");
         yAxis = Input.GetAxisRaw("Vertical");
         if (xAxis != 0f && wallJumpStart <= 0)
