@@ -36,7 +36,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashCooldownOG;
-    private float dashCooldown;
+    [SerializeField] private float dashCooldown;
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +99,7 @@ public class CharacterController : MonoBehaviour
         //dash mechanic
         if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldown <= 0)
         {
+            Debug.Log("Dashed");
             StartCoroutine(Dash());
         }
 
