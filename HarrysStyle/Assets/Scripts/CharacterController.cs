@@ -51,6 +51,7 @@ public class CharacterController : MonoBehaviour
         dashSpeed = 20;
         dashDuration = 0.15f;
         dashCooldownOG = 0.5f;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -269,6 +270,8 @@ public class CharacterController : MonoBehaviour
     {
         //Debug.Log("You Died");
         alive = false;
+
+        GameManager.instance.GameOver();
 
         // Freezes the game
         Time.timeScale = 0;
