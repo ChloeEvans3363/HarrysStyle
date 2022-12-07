@@ -9,7 +9,8 @@ public class Elevator : MonoBehaviour
     void Update()
     {
         Debug.Log(trigger);
-        if (Input.GetKeyDown(KeyCode.UpArrow) == true && trigger)
+        if ((Input.GetKeyDown(KeyCode.UpArrow) == true  || Input.GetKeyDown(KeyCode.W))
+            == true && trigger)
         {
             Time.timeScale = 0;
             nextLevelScreen.SetActive(true);
