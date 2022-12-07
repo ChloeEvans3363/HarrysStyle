@@ -9,12 +9,23 @@ public class GameOverManager : MonoBehaviour
     public void RestartButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log("restart");
     }
 
     public void MenuButton()
     {
         SceneManager.LoadScene("MainMenu");
-        Debug.Log("menu");
+    }
+
+    public void NextLevel()
+    {
+        if(SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            //End of all levels
+            Debug.Log("No more levels!");
+        }
     }
 }

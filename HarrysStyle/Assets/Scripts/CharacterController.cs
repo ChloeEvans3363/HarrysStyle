@@ -44,7 +44,7 @@ public class CharacterController : MonoBehaviour
         alive = true;
         speed = 0f;
         rb = gameObject.GetComponent<Rigidbody2D>();
-        currentHealth = 1;
+        currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
         //dash values
