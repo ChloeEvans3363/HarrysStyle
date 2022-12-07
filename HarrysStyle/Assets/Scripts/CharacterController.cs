@@ -44,7 +44,7 @@ public class CharacterController : MonoBehaviour
         alive = true;
         speed = 0f;
         rb = gameObject.GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
+        currentHealth = 1;
         healthBar.SetMaxHealth(maxHealth);
 
         //dash values
@@ -267,8 +267,10 @@ public class CharacterController : MonoBehaviour
 
     private void Death()
     {
-        Debug.Log("You Died");
+        //Debug.Log("You Died");
         alive = false;
+
+        // Freezes the game
         Time.timeScale = 0;
     }
 
