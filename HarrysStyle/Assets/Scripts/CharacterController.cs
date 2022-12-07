@@ -60,6 +60,15 @@ public class CharacterController : MonoBehaviour
         Debug.Log(currentHealth);
         xAxis = Input.GetAxisRaw("Horizontal");
         yAxis = Input.GetAxisRaw("Vertical");
+
+        if(xAxis == 1)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (xAxis == -1)
+        {
+            transform.eulerAngles = new Vector3(0, -180, 0);
+        }
         if (xAxis != 0f && wallJumpStart <= 0)
         {
             dir = Mathf.Round(xAxis);
