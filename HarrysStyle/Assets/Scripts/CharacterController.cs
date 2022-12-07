@@ -22,6 +22,8 @@ public class CharacterController : MonoBehaviour
     private bool sliding;
     private float xKnockback;
     public bool alive;
+    public AudioSource speaker;
+    public AudioClip attack;
 
     private int jumpTime;
     private int wallJumpStart;

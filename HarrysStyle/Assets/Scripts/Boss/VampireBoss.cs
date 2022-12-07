@@ -6,6 +6,8 @@ public class VampireBoss : MonoBehaviour
 {
     [Header("Game")]
     private GameObject player;
+    public AudioSource speaker;
+    public AudioClip song;
 
     [Header("Vampire Boss")]
     [SerializeField] private float waitTime = 3f; //cooldown for actions
@@ -49,6 +51,7 @@ public class VampireBoss : MonoBehaviour
         dashStartup = dashStartupOG;
         player = GameObject.FindWithTag("Player");
         sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+        speaker.PlayOneShot(song);
     }
 
     // Update is called once per frame

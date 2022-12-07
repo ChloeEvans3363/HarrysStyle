@@ -10,6 +10,8 @@ public class weapon : MonoBehaviour
     public Quaternion bulletVec;
     [SerializeField] private float shotCooldownOG = .5f;
     private float shotCooldown;
+    public AudioSource speaker;
+    public AudioClip attack;
 
     public void Start()
     {
@@ -32,6 +34,8 @@ public class weapon : MonoBehaviour
 
     private void Shoot()
     {
+        //plays sound
+        speaker.PlayOneShot(attack);
         //gets rotation of player firing point to mouse position
         Vector2 positionOnScreen = firingPoint.position;
 
