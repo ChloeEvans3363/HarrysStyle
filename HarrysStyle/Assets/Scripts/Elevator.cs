@@ -5,27 +5,25 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     public GameObject nextLevelScreen;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    bool trigger = false;
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) == true)
+        Debug.Log(trigger);
+        if (Input.GetKeyDown(KeyCode.UpArrow) == true && trigger)
         {
             Time.timeScale = 0;
             nextLevelScreen.SetActive(true);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        trigger = true;
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow) == true)
-            {
-                Time.timeScale = 0;
-                nextLevelScreen.SetActive(true);
-            }
-        }
-
+        trigger = false;
     }
 }
