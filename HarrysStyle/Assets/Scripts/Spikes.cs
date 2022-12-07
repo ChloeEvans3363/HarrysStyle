@@ -11,12 +11,23 @@ public class Spikes : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.GetComponent<CharacterController>().transform.position = checkpoint.transform.position;
+            CharacterController player = collision.GetComponent<CharacterController>();
 
-            if (!collision.GetComponent<CharacterController>().invincible)
-            {
-                collision.GetComponent<CharacterController>().Damage(attackDamage);
-            }
+            StartCoroutine(spikeEffect(player));
         }
+    }
+
+    //freeze player for 1 second then teleport them to the checkpoint
+    public IEnumerator spikeEffect(CharacterController player)
+    {
+        if (!player.invincible)
+        {
+            player.Stun(1f);
+            player.Damage(attackDamage);
+        }
+
+        yield return new WaitForSeconds(0.95f);
+
+        player.transform.position = checkpoint.transform.position;
     }
 }
