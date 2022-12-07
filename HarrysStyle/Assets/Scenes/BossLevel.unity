@@ -569,7 +569,7 @@ PrefabInstance:
     - target: {fileID: 5897586185538095778, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 2026485416}
+      objectReference: {fileID: 1222351799}
     - target: {fileID: 5897586185538095779, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -812,6 +812,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 2
+--- !u!114 &1222351799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3020292414652961989, guid: 54bab8227b2769444a894cf16725e026, type: 3}
+  m_PrefabInstance: {fileID: 395855155}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7fde824314d94c41a30526b2867fd43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1269868418 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3020292414105064471, guid: 54bab8227b2769444a894cf16725e026, type: 3}
@@ -2697,12 +2708,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitTime: 2
-  colorOG: {r: 0.8392157, g: 0.6, b: 1, a: 1}
+  colorOG: {r: 1, g: 1, b: 1, a: 1}
   currentAttack: 0
   dashStartupOG: 0.25
   dashStartup: 0
   dashSpeed: 15
-  dashColor: {r: 0.92156863, g: 0.19607843, b: 0, a: 1}
+  dashColor: {r: 1, g: 0.21276596, b: 0, a: 1}
   dashProgress: 0
   dashStun: 1
   batSummons:
