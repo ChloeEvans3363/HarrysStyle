@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 5897586185538095788}
   - component: {fileID: 5897586185538095789}
   - component: {fileID: 657836665}
-  - component: {fileID: -2988264369953446646}
   - component: {fileID: 5226911795699309151}
   m_Layer: 7
   m_Name: PlayerCharacter
@@ -194,8 +193,8 @@ MonoBehaviour:
   hasClimb: 0
   stun: 0
   alive: 0
-  speaker: {fileID: 0}
-  attack: {fileID: 0}
+  speaker: {fileID: 5226911795699309151}
+  dashSound: {fileID: 8300000, guid: 2a96dd1db222ecf43842b3bf676e54e9, type: 3}
   maxHealth: 20
   currentHealth: 0
   healthBar: {fileID: 0}
@@ -269,14 +268,6 @@ MonoBehaviour:
   shotCooldownOG: 0.5
   speaker: {fileID: 5226911795699309151}
   attack: {fileID: 8300000, guid: 4e45e6c9b29b8a545a64480bd4efb22f, type: 3}
---- !u!81 &-2988264369953446646
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5897586185538095777}
-  m_Enabled: 1
 --- !u!82 &5226911795699309151
 AudioSource:
   m_ObjectHideFlags: 0

@@ -332,6 +332,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3761238050366881017, guid: 54bab8227b2769444a894cf16725e026, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 583750852}
+    - target: {fileID: 3761238050366881017, guid: 54bab8227b2769444a894cf16725e026, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902224645725939513, guid: 54bab8227b2769444a894cf16725e026, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287276443598089827, guid: 54bab8227b2769444a894cf16725e026, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 583750852}
+    - target: {fileID: 4287276443598089827, guid: 54bab8227b2769444a894cf16725e026, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353058435709787811, guid: 54bab8227b2769444a894cf16725e026, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 583750852}
+    - target: {fileID: 4353058435709787811, guid: 54bab8227b2769444a894cf16725e026, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     - target: {fileID: 4497063212775044339, guid: 54bab8227b2769444a894cf16725e026, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -422,6 +450,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6708485488188234580, guid: 54bab8227b2769444a894cf16725e026, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311384366875460454, guid: 54bab8227b2769444a894cf16725e026, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -767,6 +799,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2988264369953446646, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5897586185538095777, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
@@ -821,6 +857,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
+--- !u!1 &583750852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5897586185538095777, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
+  m_PrefabInstance: {fileID: 583750851}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &648718073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10994,7 +11035,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032931101}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &2032931103
 Camera:
   m_ObjectHideFlags: 0

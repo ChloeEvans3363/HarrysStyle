@@ -23,7 +23,7 @@ public class CharacterController : MonoBehaviour
     private float xKnockback;
     public bool alive;
     public AudioSource speaker;
-    public AudioClip attack;
+    public AudioClip dashSound;
 
     private int jumpTime;
     private int wallJumpStart;
@@ -253,6 +253,7 @@ public class CharacterController : MonoBehaviour
 
     public IEnumerator Dash()
     {
+        speaker.PlayOneShot(dashSound);
         dashCooldown = dashCooldownOG;
         maxSpeed += dashSpeed;
         acceleration += dashSpeed;
