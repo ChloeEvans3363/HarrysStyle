@@ -803,6 +803,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5897586185538095776, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5897586185538095777, guid: 774a55d8a692541dda7f1de90a15e8db, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter

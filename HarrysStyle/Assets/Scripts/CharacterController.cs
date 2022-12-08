@@ -28,6 +28,9 @@ public class CharacterController : MonoBehaviour
     private int jumpTime;
     private int wallJumpStart;
 
+    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private GameObject shootPoint; //This exists to be used when moving the fire point
+
     [SerializeField] private int maxHealth = 20;
     public int currentHealth;
     public HealthBar healthBar;
@@ -63,13 +66,15 @@ public class CharacterController : MonoBehaviour
         xAxis = Input.GetAxisRaw("Horizontal");
         yAxis = Input.GetAxisRaw("Vertical");
 
-        if(xAxis == 1)
+        if(xAxis > 0f)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            //transform.eulerAngles = new Vector3(0, 0, 0);
+            sprite.flipX = false;
         }
-        else if (xAxis == -1)
+        else if (xAxis < 0f)
         {
-            transform.eulerAngles = new Vector3(0, -180, 0);
+            //transform.eulerAngles = new Vector3(0, -180, 0);
+            sprite.flipX = true;
         }
         if (xAxis != 0f && wallJumpStart <= 0)
         {

@@ -195,6 +195,7 @@ MonoBehaviour:
   alive: 0
   speaker: {fileID: 5226911795699309151}
   dashSound: {fileID: 8300000, guid: 2a96dd1db222ecf43842b3bf676e54e9, type: 3}
+  sprite: {fileID: 6527587601247784840}
   maxHealth: 20
   currentHealth: 0
   healthBar: {fileID: 0}
