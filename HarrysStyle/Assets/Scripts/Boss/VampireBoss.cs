@@ -7,7 +7,8 @@ public class VampireBoss : MonoBehaviour
     [Header("Game")]
     private GameObject player;
     public AudioSource speaker;
-    public AudioClip song;
+    public AudioClip basicAttack;
+    public AudioClip orbAttack;
 
     [Header("Vampire Boss")]
     [SerializeField] private float waitTime = 3f; //cooldown for actions
@@ -51,7 +52,6 @@ public class VampireBoss : MonoBehaviour
         dashStartup = dashStartupOG;
         player = GameObject.FindWithTag("Player");
         sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
-        speaker.PlayOneShot(song);
     }
 
     // Update is called once per frame
@@ -112,6 +112,7 @@ public class VampireBoss : MonoBehaviour
     {
         if(dashStartup == dashStartupOG)
         {
+            speaker.PlayOneShot(basicAttack);
             targetPos = player.transform.position; //the location that the vampire boss will dash to
             if(dashProgress == 1 && Mathf.Abs(transform.position.x - targetPos.x) > 0.25f)
             {
@@ -166,6 +167,7 @@ public class VampireBoss : MonoBehaviour
 
     public void SummonBats()
     {
+        speaker.PlayOneShot(orbAttack);
         if (!batsSummoned)
         {
             sprite.color = batColor;
