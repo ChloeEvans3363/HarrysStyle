@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5a726cd6d29013d4e8a4a6af409f2fcb
+guid: c8c696c5066df7246948f834c7543dbd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,85 +104,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vamp_0
+      name: vampattack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc687512bc909824fb90932119a9f9b6
-      internalID: -2063026096
+      spriteID: b3c6163b2f562dd48ad134ffdcd638ba
+      internalID: -1603515584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vamp_1
+      name: vampattack_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4436df26f1a195f4cb5ec44957fc0693
-      internalID: 1041675714
+      spriteID: 3fcbb6418fa645241ba44d7907ea19bf
+      internalID: -1080185510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vamp_2
+      name: vampattack_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63183b2ede71f884b93c89213b9bb807
-      internalID: -1428630129
+      spriteID: 6d48724fddb448244b36fc326dfd88e2
+      internalID: -242699359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vamp_3
+      name: vampattack_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 037be0396cc40f1458a18c06e744140c
-      internalID: -672094591
+      spriteID: 484ec68cb98f4ab4794fba0280b62023
+      internalID: -2127659796
       vertices: []
       indices: 
       edges: []
@@ -198,10 +198,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      vamp_0: -2063026096
-      vamp_2: -1428630129
-      vamp_3: -672094591
-      vamp_1: 1041675714
+      vampattack_0: -1603515584
+      vampattack_2: -242699359
+      vampattack_3: -2127659796
+      vampattack_1: -1080185510
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

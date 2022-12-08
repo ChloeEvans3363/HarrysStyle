@@ -8,7 +8,7 @@ public class Elevator : MonoBehaviour
     bool trigger = false;
     void Update()
     {
-        Debug.Log(trigger);
+        //Debug.Log(trigger);
         if ((Input.GetKeyDown(KeyCode.UpArrow) == true  || Input.GetKeyDown(KeyCode.W))
             == true && trigger)
         {

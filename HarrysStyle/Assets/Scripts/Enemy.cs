@@ -102,6 +102,7 @@ public class Enemy : MonoBehaviour
             {
                 timer = 0;
                 attackHitbox.SetActive(true);
+                gameObject.GetComponentInChildren<Animator>().SetTrigger("Attack");
             }
         }
     }
