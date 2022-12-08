@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rigid;
     private float knockbackForce = 20f;
     private int attackDamage;
+    public AudioSource speaker;
+    public AudioClip attack;
 
     private float timer;
     public GameObject attackHitbox;
@@ -86,7 +88,7 @@ public class Enemy : MonoBehaviour
     void Attack()
     {
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f, LayerMask.GetMask("Default"));
-
+        speaker.PlayOneShot(attack);
         if (Vector2.Distance(transform.position, player.transform.position) >= 2 && groundInfo.collider == true)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);

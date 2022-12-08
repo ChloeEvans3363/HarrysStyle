@@ -17,6 +17,9 @@ public class Bat : MonoBehaviour
     private float timer;
     private int attackDamage;
 
+    public AudioSource speaker;
+    public AudioClip attack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +69,7 @@ public class Bat : MonoBehaviour
 
     void shoot()
     {
+        speaker.PlayOneShot(attack);
         Instantiate(projectile, projectilePos.position, Quaternion.identity);
     }
 
