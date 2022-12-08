@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dcbf3576ee1a9504ebc695c3d5fc7144
+guid: fd0ef943f3a52314c93523ba47f6082d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,85 +104,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: harry_0
+      name: attackAnim_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 24
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 26
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52c02b5d0c5a53a43a4d82eded977255
-      internalID: -1432905880
+      spriteID: 5145738378c236b42905f9825f3491ee
+      internalID: -1189549847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: harry_1
+      name: attackAnim_1
       rect:
         serializedVersion: 2
         x: 26
         y: 0
-        width: 24
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 26
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf8f349303958dd45aafec84be30af4f
-      internalID: -1891458491
+      spriteID: a4be1e70f859f1643b473b6dd2e489a2
+      internalID: -1633715393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: harry_2
+      name: attackAnim_2
       rect:
         serializedVersion: 2
         x: 52
         y: 0
-        width: 24
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 26
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ba6c5e0fd82e424abad9eddf3383f8e
-      internalID: 1271319449
+      spriteID: 2b9ea41198997c545a706d5fe974d961
+      internalID: -1859792380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: harry_3
+      name: attackAnim_3
       rect:
         serializedVersion: 2
         x: 78
         y: 0
-        width: 24
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 26
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 297f4541d0390ae4b98e76bd6337e503
-      internalID: -101332586
+      spriteID: 6675fbf2eecbc08439a854b740d797ea
+      internalID: -763466317
       vertices: []
       indices: 
       edges: []
@@ -198,10 +198,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      harry_1: -1891458491
-      harry_0: -1432905880
-      harry_2: 1271319449
-      harry_3: -101332586
+      attackAnim_2: -1859792380
+      attackAnim_3: -763466317
+      attackAnim_1: -1633715393
+      attackAnim_0: -1189549847
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

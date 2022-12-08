@@ -34,6 +34,8 @@ public class weapon : MonoBehaviour
 
     private void Shoot()
     {
+        gameObject.GetComponentInChildren<Animator>().SetTrigger("Shoot");
+
         //plays sound
         speaker.PlayOneShot(attack);
         //gets rotation of player firing point to mouse position
@@ -47,7 +49,6 @@ public class weapon : MonoBehaviour
         //creates bullet facing the rotation made above
         //if it is facing straight, check our rigidbody setup (freeze rotation?)
         Instantiate(projectile, firingPoint.position, bulletVec);
-
     }
 
     public void Stun(float stunDuration)
