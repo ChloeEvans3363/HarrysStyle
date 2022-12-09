@@ -29,4 +29,13 @@ public class CameraSwapZone : MonoBehaviour
             cam.SetCam(scrollY, minBound, maxBound, nonScrollingPos);
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        if(!scrollY)
+            Gizmos.DrawWireCube(new Vector3(minBound + (maxBound - minBound) * 0.5f, nonScrollingPos, 0f), new Vector3(20f + (maxBound - minBound), 11.25f, 0f));
+        else
+            Gizmos.DrawWireCube(new Vector3(nonScrollingPos, minBound + (maxBound - minBound) * 0.5f, 0f), new Vector3(20f, 11.25f + (maxBound - minBound), 0f));
+    }
 }
