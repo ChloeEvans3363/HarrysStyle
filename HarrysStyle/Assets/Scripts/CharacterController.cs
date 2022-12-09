@@ -81,27 +81,6 @@ public class CharacterController : MonoBehaviour
             dir = Mathf.Round(xAxis);
         }
 
-        //Changes the player's speed
-        if((xAxis > 0.1f || xAxis < -0.1f) && stun <= 0)
-        {
-            speed += acceleration;
-            if (speed > maxSpeed)
-            {
-                speed = maxSpeed;
-            }
-        }
-        //Slows the player to a stop
-        else
-        {
-            if(speed > 0f)
-            {
-                speed -= acceleration;
-            }
-            else if (speed < 0f)
-            {
-                speed = 0f;
-            }
-        }
         if(Input.GetButtonDown("Jump") && stun <= 0)
         {
             jumpQueue = 2;
@@ -145,6 +124,27 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Changes the player's speed
+        if ((xAxis > 0.1f || xAxis < -0.1f) && stun <= 0)
+        {
+            speed += acceleration;
+            if (speed > maxSpeed)
+            {
+                speed = maxSpeed;
+            }
+        }
+        //Slows the player to a stop
+        else
+        {
+            if (speed > 0f)
+            {
+                speed -= acceleration;
+            }
+            else if (speed < 0f)
+            {
+                speed = 0f;
+            }
+        }
         //Used for wall jumping. Not applicable in this project.
         /*if (!hasWallJump || xAxis == 0f)
         {
