@@ -196,6 +196,7 @@ MonoBehaviour:
   speaker: {fileID: 5226911795699309151}
   dashSound: {fileID: 8300000, guid: 2a96dd1db222ecf43842b3bf676e54e9, type: 3}
   sprite: {fileID: 6527587601247784840}
+  shootPoint: {fileID: 0}
   maxHealth: 20
   currentHealth: 0
   healthBar: {fileID: 0}
@@ -249,7 +250,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1.2}
+  m_Size: {x: 0.775, y: 1.175}
   m_EdgeRadius: 0
 --- !u!114 &657836665
 MonoBehaviour:
