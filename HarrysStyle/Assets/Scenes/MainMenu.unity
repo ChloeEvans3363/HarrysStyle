@@ -521,7 +521,7 @@ MonoBehaviour:
   m_text: "<b>Design / Development</b>\n\n- Karl Choi\n- Chloe Evans\n- Egan Frelich\n-
     Zo\xE9 Rose\n- Aidan VanBurger\n\n<b>Code</b>\n\n- Karl Choi\n- Chloe Evans\n-
     Egan Frelich\n- Aidan VanBurger\n\n- ZeroKelvinTutorials\n\n<b>Art</b>\n\n- Egan
-    Frelich\n- Aidan VanBurger\n\n<b>Audio</b>\n\n- Aidan VanBurger"
+    Frelich\n- Aidan VanBurger\n\n- CreativeKind\n\n<b>Audio</b>\n\n- Aidan VanBurger"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e6851cb36afc4140aa69ccf5e76a47b, type: 2}
   m_sharedMaterial: {fileID: -3075732607266789553, guid: 1e6851cb36afc4140aa69ccf5e76a47b, type: 2}
